@@ -1,7 +1,7 @@
-# OpenPDF
+# Local PDF Toolkit
 
-> "OpenPDF" is a working name; the final product name is still to be chosen.
-> Not to be confused with [LibrePDF/OpenPDF](https://github.com/LibrePDF/OpenPDF),
+> The desktop app and the v0.2.0 installers still carry the earlier working name
+> "OpenPDF" (the app, the package files and the docs below use it). Not to be confused with [LibrePDF/OpenPDF](https://github.com/LibrePDF/OpenPDF),
 > an unrelated Java library for creating PDFs.
 
 A PDF editor for people (desktop app and browser) and a PDF toolkit for programs
@@ -68,7 +68,7 @@ Third-party licences: [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md).
 | System | Average without the two math categories (6 categories) | Overall (8 categories) | s/page |
 |---|---|---|---|
 | Docling 2, default settings (OCR on) | 71.6 | 53.7 | 19.0 |
-| **OpenPDF `pdf_read_markdown`** (OCRs scans and pictures itself) | **71.3** | **53.5** | 7.8 (CPU only) |
+| **Local PDF Toolkit `pdf_read_markdown`** (OCRs scans and pictures itself) | **71.3** | **53.5** | 7.8 (CPU only) |
 | PyMuPDF4LLM 2.0 | 50.2 | 37.7 | 2.4 |
 
 The overall score is held down by the two math categories, which score 0
@@ -85,15 +85,15 @@ redacted files are then searched with tools that had no part in the redaction.
 
 | Tool | Clean (of 13) |
 |---|---|
-| OpenPDF, desktop / server (PDFBox) | **13** |
-| OpenPDF, browser (PDFium WASM) | **13** |
+| Local PDF Toolkit, desktop / server (PDFBox) | **13** |
+| Local PDF Toolkit, browser (PDFium WASM) | **13** |
 | PdfCraft 0.18.2, redact + Sanitize | 13 (Sanitize also removes every comment, bookmark and attachment) |
 | Stirling-PDF 3.2.1, convert to image | 10 |
 | PyMuPDF 2.0 + `scrub()` | 9 |
 | Stirling-PDF 3.2.1, auto-redact | 8 |
 | pdf-redactor 0.0.1 | 4 |
 
-The test set was designed by the author of OpenPDF, so read it as a check of
+The test set was designed by the author of this toolkit, so read it as a check of
 the cases it covers, not as an independent ranking. Full table and per-case
 results: [benchmarks/redaction/README.md](./benchmarks/redaction/README.md).
 
