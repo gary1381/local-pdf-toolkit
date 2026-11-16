@@ -1,0 +1,15 @@
+{
+  "name": "openpdf-desktop",
+  "private": true,
+  "license": "Apache-2.0",
+  "version": "0.2.0",
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build:windows": "tauri build --target x86_64-pc-windows-msvc"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.2.0"
+  }
+}

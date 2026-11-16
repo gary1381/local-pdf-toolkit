@@ -1,0 +1,94 @@
+{
+  "comment": "Document reading models (docs/OCR-MODELS.md). Files are pinned to a repository commit and checked against their SHA-256 after download. server_args go to llama.cpp's llama-server; profile tells the structure service how to prompt the model.",
+  "llama_cpp": {
+    "repository": "https://github.com/ggml-org/llama.cpp",
+    "commit": "1725dcab4baac46c4eb197afc96af7b57a81882a",
+    "note": "the branch of pull request #24975 (R-SWA attention for Unlimited-OCR), not merged upstream yet"
+  },
+  "tiers": {
+    "fast": {
+      "name": "PaddleOCR-VL 1.6",
+      "summary": "Tables, formulas and scans; recommended. GPU or CPU.",
+      "licence": "Apache-2.0",
+      "source": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6",
+      "profile": "paddleocr-vl",
+      "min_gpu_mb": 1600,
+      "cpu_ok": true,
+      "files": [
+        {
+          "name": "PaddleOCR-VL-1.6-Q4_K_M.gguf",
+          "url": "https://huggingface.co/LunarOilRig/PaddleOCR-VL-1.6-GGUF-Q4/resolve/6a772c793f22e0a9e7d8fabd3229431be024569d/PaddleOCR-VL-1.6-Q4_K_M.gguf",
+          "sha256": "d79bfabcb904eaf078f1f8a9a4bfd865f0ad6cda17b6441df7ce4bdf641a2651",
+          "size": 300219360,
+          "role": "model"
+        },
+        {
+          "name": "mmproj-Q8_0.gguf",
+          "url": "https://huggingface.co/LunarOilRig/PaddleOCR-VL-1.6-GGUF-Q4/resolve/6a772c793f22e0a9e7d8fabd3229431be024569d/mmproj-Q8_0.gguf",
+          "sha256": "cc4e8e42afe3b45e40168eb4769aad8b491c5fb7aaca937d8e9746f5f0e6f425",
+          "size": 597565600,
+          "role": "mmproj"
+        }
+      ],
+      "server_args": [
+        "--jinja",
+        "--temp",
+        "0",
+        "-c",
+        "16384",
+        "-np",
+        "2"
+      ]
+    },
+    "best": {
+      "name": "Unlimited-OCR 3B",
+      "summary": "Best reading of whole pages, scans and dense tables; needs a GPU. Experimental.",
+      "licence": "MIT",
+      "source": "https://huggingface.co/baidu/Unlimited-OCR",
+      "profile": "unlimited-ocr",
+      "experimental": true,
+      "min_gpu_mb": 5200,
+      "cpu_ok": false,
+      "files": [
+        {
+          "name": "Unlimited-OCR-Q4_K_M.gguf",
+          "url": "https://huggingface.co/sahilchachra/Unlimited-OCR-GGUF/resolve/0dc781d8a23f52963918ebd5b2d1b9fe61504661/Unlimited-OCR-Q4_K_M.gguf",
+          "sha256": "c8461bded976eac709a33f6b26e1414efcd2124a203f2ee93ee984a4c9e9265b",
+          "size": 1950326784,
+          "role": "model"
+        },
+        {
+          "name": "mmproj-Unlimited-OCR-F16.gguf",
+          "url": "https://huggingface.co/sahilchachra/Unlimited-OCR-GGUF/resolve/0dc781d8a23f52963918ebd5b2d1b9fe61504661/mmproj-Unlimited-OCR-F16.gguf",
+          "sha256": "4f28c295e1fcf67a97488e356f2b4372da4702b77fdfad0fa138b5821325743c",
+          "size": 811876448,
+          "role": "mmproj"
+        }
+      ],
+      "server_args": [
+        "--chat-template",
+        "deepseek-ocr",
+        "--temp",
+        "0",
+        "--flash-attn",
+        "off",
+        "-c",
+        "16384",
+        "-np",
+        "1",
+        "--dry-multiplier",
+        "0.8",
+        "--dry-base",
+        "1.75",
+        "--dry-allowed-length",
+        "35",
+        "--dry-penalty-last-n",
+        "128",
+        "--dry-sequence-breaker",
+        "none",
+        "--special"
+      ],
+      "note": "--special: its <|det|> block marks and table tags are special tokens; /completion is used (the chat endpoint loses the picture with this template)"
+    }
+  }
+}

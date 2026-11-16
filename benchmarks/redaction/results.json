@@ -1,0 +1,3769 @@
+{
+ "cases": [
+  {
+   "id": "page-text",
+   "title": "Plain text on the page",
+   "where": "page text",
+   "secrets": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "split-text",
+   "title": "Text split up: kerning, one letter at a time",
+   "where": "page text (TJ arrays, separate letters)",
+   "secrets": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "rotated",
+   "title": "Rotated page",
+   "where": "page text, page /Rotate 90",
+   "secrets": [
+    "078-05-1120"
+   ],
+   "parts": {},
+   "terms": [
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "chinese",
+   "title": "Chinese text (embedded font, no readable bytes)",
+   "where": "page text, CJK font",
+   "secrets": [
+    "张伟明",
+    "110105199003078812"
+   ],
+   "parts": {},
+   "terms": [
+    "张伟明",
+    "110105199003078812"
+   ],
+   "regions": [],
+   "keep": [
+    "河畔牙科集团",
+    "服务协议",
+    "季度付款",
+    "患者姓名",
+    "身份证号",
+    "病历"
+   ],
+   "keep_as_text_before": 6
+  },
+  {
+   "id": "neighbours",
+   "title": "Secrets right next to other words",
+   "where": "page text",
+   "secrets": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored",
+    "ID:",
+    "Phone",
+    "555-0100",
+    "Client",
+    "branch"
+   ],
+   "keep_as_text_before": 13
+  },
+  {
+   "id": "shared-form",
+   "title": "Footer shared by two pages (form XObject)",
+   "where": "form XObject used on 2 pages",
+   "secrets": [
+    "Margaret Hollister"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "annotations",
+   "title": "Comments and links",
+   "where": "sticky note, text box comment, link address",
+   "secrets": [
+    "Margaret Hollister",
+    "078-05-1120",
+    "m.hollister@example.com"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister",
+    "078-05-1120",
+    "m.hollister@example.com"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "metadata",
+   "title": "Document properties, XMP and bookmarks",
+   "where": "Info dictionary, XMP, outline",
+   "secrets": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "actual-text",
+   "title": "Replacement text for screen readers (/ActualText, /Alt)",
+   "where": "marked content in the page",
+   "secrets": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "attachment",
+   "title": "Attached file",
+   "where": "embedded file",
+   "secrets": [
+    "078-05-1120"
+   ],
+   "parts": {},
+   "terms": [
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "form-field",
+   "title": "Filled form fields",
+   "where": "AcroForm values and their appearances",
+   "secrets": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "parts": {
+    "Margaret Hollister": [
+     "Hollister"
+    ]
+   },
+   "terms": [
+    "Margaret Hollister",
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "Riverside",
+    "agreement",
+    "quarterly",
+    "payment",
+    "Section",
+    "records",
+    "signed",
+    "stored"
+   ],
+   "keep_as_text_before": 8
+  },
+  {
+   "id": "picture",
+   "title": "Scanned page, box drawn over the number",
+   "where": "picture pixels",
+   "secrets": [
+    "078-05-1120"
+   ],
+   "parts": {},
+   "terms": [],
+   "regions": [
+    {
+     "page": 1,
+     "x": 69.0,
+     "y": 120.56,
+     "width": 160.07999999999998,
+     "height": 17.36
+    }
+   ],
+   "keep": [
+    "RIVERSIDE",
+    "DENTAL",
+    "quarterly",
+    "services",
+    "Payment",
+    "thanks"
+   ],
+   "keep_as_text_before": 0
+  },
+  {
+   "id": "ocr-layer",
+   "title": "Scanned page with an invisible OCR text layer",
+   "where": "invisible text and picture pixels",
+   "secrets": [
+    "078-05-1120"
+   ],
+   "parts": {},
+   "terms": [
+    "078-05-1120"
+   ],
+   "regions": [],
+   "keep": [
+    "RIVERSIDE",
+    "DENTAL",
+    "quarterly",
+    "services",
+    "Payment",
+    "thanks"
+   ],
+   "keep_as_text_before": 6
+  }
+ ],
+ "tools": [
+  {
+   "key": "openpdf-server",
+   "label": "OpenPDF (desktop / server, PDFBox)",
+   "version": "2026-10-23 build"
+  },
+  {
+   "key": "openpdf-browser",
+   "label": "OpenPDF (browser, PDFium WASM)",
+   "version": "2026-10-23 build"
+  },
+  {
+   "key": "pymupdf",
+   "label": "PyMuPDF (apply_redactions)",
+   "version": "2.0"
+  },
+  {
+   "key": "pymupdf-scrub",
+   "label": "PyMuPDF + scrub()",
+   "version": "2.0"
+  },
+  {
+   "key": "stirling",
+   "label": "Stirling-PDF (auto-redact, keep text)",
+   "version": "3.2.1"
+  },
+  {
+   "key": "stirling-sanitize",
+   "label": "Stirling-PDF (auto-redact + sanitize)",
+   "version": "3.2.1"
+  },
+  {
+   "key": "stirling-image",
+   "label": "Stirling-PDF (convert to image)",
+   "version": "3.2.1"
+  },
+  {
+   "key": "pdfcraft",
+   "label": "PDFCraft (find & redact)",
+   "version": "git e3b231b"
+  },
+  {
+   "key": "pdfcraft-rs",
+   "label": "PdfCraft (Rust, redact)",
+   "version": "0.18.2"
+  },
+  {
+   "key": "pdfcraft-rs-sanitize",
+   "label": "PdfCraft (Rust, redact + sanitize)",
+   "version": "0.18.2"
+  },
+  {
+   "key": "pdf-redactor",
+   "label": "pdf-redactor (regex on text)",
+   "version": "0.0.1"
+  },
+  {
+   "key": "black-box",
+   "label": "Black box drawn on top (control)",
+   "version": "-"
+  }
+ ],
+ "runs": {
+  "openpdf-server": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "openpdf-browser": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "pymupdf": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "attached file"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "pymupdf-scrub": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "bookmark"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "bookmark"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "attached file"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "stirling": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "attached file"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "OCR of a picture"
+       ],
+       "where": []
+      }
+     ],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "stirling-sanitize": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "annotation",
+        "unreferenced other object"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation",
+        "unreferenced other object"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "bookmark",
+        "unreferenced other object"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "bookmark",
+        "unreferenced other object"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "attached file"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field",
+        "unreferenced other object"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field",
+        "unreferenced other object"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "OCR of a picture"
+       ],
+       "where": []
+      }
+     ],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "stirling-image": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "attached file"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "form XObject (unused)",
+        "form field"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "form XObject (unused)",
+        "form field"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "pdf-redactor": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "error",
+    "note": "IndexError: pop from empty list",
+    "verdict": "error"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content (form XObject)"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "m.hollister@example.com",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "bookmark"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "bookmark"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "attached file"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "error",
+    "note": "IndexError: pop from empty list",
+    "verdict": "error"
+   },
+   "picture": {
+    "status": "n/a",
+    "note": "the tool cannot be asked this way",
+    "verdict": "n/a"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "OCR of a picture"
+       ],
+       "where": []
+      }
+     ],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "warnings",
+     "reader_errors": [
+      "pypdf: Invalid Elementary Object starting with b'>' @4: b'Gat\\n>\\nO;,\\n>'"
+     ]
+    },
+    "verdict": "leak"
+   }
+  },
+  "black-box": {
+   "page-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [
+      {
+       "secret": "张伟明",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf"
+       ],
+       "where": []
+      },
+      {
+       "secret": "110105199003078812",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content (form XObject)"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "annotation",
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      },
+      {
+       "secret": "m.hollister@example.com",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "annotation"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties",
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties",
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "objects"
+       ],
+       "where": [
+        "attached file",
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation appearance",
+        "form field"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "OCR of a picture"
+       ],
+       "where": []
+      }
+     ],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "",
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "pdfminer",
+        "pypdf",
+        "OCR of a picture",
+        "objects"
+       ],
+       "where": [
+        "page content"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   }
+  },
+  "pdfcraft": {
+   "page-text": {
+    "status": "ok",
+    "note": "2 boxes",
+    "seconds": 2.04,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "2 boxes",
+    "seconds": 0.39,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "1 boxes",
+    "seconds": 0.73,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "OCR of a picture"
+       ],
+       "where": []
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "2 boxes",
+    "seconds": 0.28,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 5,
+     "keep_total": 6,
+     "keep_missing": [
+      "身份证号"
+     ],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "2 boxes",
+    "seconds": 0.25,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "2 boxes",
+    "seconds": 0.3,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "1 boxes",
+    "seconds": 0.26,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "OCR of a picture"
+       ],
+       "where": []
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "2 boxes",
+    "seconds": 0.22,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "2 boxes",
+    "seconds": 0.29,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "1 boxes",
+    "seconds": 0.29,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "form-field": {
+    "status": "refused",
+    "note": "No matches selected for redaction",
+    "seconds": 0.12,
+    "verdict": "refused"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "1 boxes",
+    "seconds": 0.32,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "1 boxes",
+    "seconds": 0.62,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "pdfcraft-rs": {
+   "page-text": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.05,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.46,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.27,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.53,
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 1.48,
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 3.27,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.16,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "annotation",
+        "unreferenced other object"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "poppler",
+        "objects"
+       ],
+       "where": [
+        "annotation",
+        "unreferenced other object"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.06,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "Margaret Hollister",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties",
+        "unreferenced other object"
+       ]
+      },
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "XMP metadata",
+        "bookmark",
+        "document properties",
+        "unreferenced other object"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.13,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.4,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [
+      {
+       "secret": "078-05-1120",
+       "found_by": [
+        "objects"
+       ],
+       "where": [
+        "attached file"
+       ]
+      }
+     ],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "leak"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.07,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.16,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 2.25,
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  },
+  "pdfcraft-rs-sanitize": {
+   "page-text": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.57,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "split-text": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.19,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "rotated": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.26,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "chinese": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 1.28,
+    "check": {
+     "keep_as_text": 6,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "neighbours": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.45,
+    "check": {
+     "keep_as_text": 13,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 13,
+     "keep_total": 13,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "shared-form": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.55,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "annotations": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.68,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "metadata": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.54,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "actual-text": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.05,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "attachment": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.3,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "form-field": {
+    "status": "ok",
+    "note": "2 marks",
+    "seconds": 0.07,
+    "check": {
+     "keep_as_text": 8,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 8,
+     "keep_total": 8,
+     "keep_missing": [],
+     "has_text": true,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "picture": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 0.4,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   },
+   "ocr-layer": {
+    "status": "ok",
+    "note": "1 marks",
+    "seconds": 1.76,
+    "check": {
+     "keep_as_text": 0,
+     "leaks": [],
+     "partial": [],
+     "keep_found": 6,
+     "keep_total": 6,
+     "keep_missing": [],
+     "has_text": false,
+     "valid": "ok",
+     "reader_errors": []
+    },
+    "verdict": "clean"
+   }
+  }
+ }
+}

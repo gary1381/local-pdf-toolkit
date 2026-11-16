@@ -1,0 +1,78 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "OpenPDF",
+  "version": "0.2.0",
+  "identifier": "com.pdfgateway.desktop",
+  "build": {
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "title": "OpenPDF",
+        "width": 1320,
+        "height": 880,
+        "minWidth": 960,
+        "minHeight": 640,
+        "create": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "fileAssociations": [
+      {
+        "ext": ["pdf"],
+        "mimeType": "application/pdf",
+        "name": "PDF document",
+        "description": "PDF document",
+        "role": "Editor"
+      },
+      {
+        "ext": ["jpg", "jpeg"],
+        "mimeType": "image/jpeg",
+        "name": "JPEG picture",
+        "description": "JPEG picture: opens as a new PDF",
+        "role": "Viewer",
+        "rank": "Alternate"
+      },
+      {
+        "ext": ["png"],
+        "mimeType": "image/png",
+        "name": "PNG picture",
+        "description": "PNG picture: opens as a new PDF",
+        "role": "Viewer",
+        "rank": "Alternate"
+      },
+      {
+        "ext": ["tif", "tiff"],
+        "mimeType": "image/tiff",
+        "name": "TIFF picture",
+        "description": "TIFF picture: opens as a new PDF",
+        "role": "Viewer",
+        "rank": "Alternate"
+      },
+      {
+        "ext": ["gif"],
+        "mimeType": "image/gif",
+        "name": "GIF picture",
+        "description": "GIF picture: opens as a new PDF",
+        "role": "Viewer",
+        "rank": "Alternate"
+      },
+      {
+        "ext": ["bmp"],
+        "mimeType": "image/bmp",
+        "name": "BMP picture",
+        "description": "BMP picture: opens as a new PDF",
+        "role": "Viewer",
+        "rank": "Alternate"
+      }
+    ]
+  }
+}

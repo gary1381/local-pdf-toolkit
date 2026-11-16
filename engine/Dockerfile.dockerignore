@@ -1,0 +1,15 @@
+*
+!services/pdfbox/pom.xml
+!services/pdfbox/src
+!services/qpdf/requirements.txt
+!services/qpdf/app
+!services/ocr/requirements.txt
+!services/ocr/app
+!services/structure/requirements.txt
+!services/structure/app
+!gateway/requirements.txt
+!gateway/app
+!engine/pdf_engine
+!THIRD-PARTY-NOTICES.md
+**/__pycache__
+**/*.pyc

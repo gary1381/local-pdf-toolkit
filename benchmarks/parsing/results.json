@@ -1,0 +1,639 @@
+{
+ "openpdf-text": {
+  "overall": 31.0,
+  "ci": 1.0,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 87.3,
+    "passed": 1217,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 41.7,
+    "passed": 317,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 47.1,
+    "passed": 208,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 58.1,
+    "passed": 514,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 13.3,
+    "passed": 70,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 0.1,
+    "passed": 1,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 0.3,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 178
+ },
+ "openpdf-text-ordered": {
+  "overall": 20.5,
+  "ci": 0.8,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 87.3,
+    "passed": 1217,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 33.2,
+    "passed": 252,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 17.0,
+    "passed": 75,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 13.2,
+    "passed": 117,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 13.3,
+    "passed": 70,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 0.1,
+    "passed": 1,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 0.28,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 178
+ },
+ "pymupdf4llm": {
+  "overall": 37.7,
+  "ci": 0.9,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 87.2,
+    "passed": 1215,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 38.9,
+    "passed": 296,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 33.7,
+    "passed": 149,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 66.7,
+    "passed": 590,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 13.3,
+    "passed": 70,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 61.4,
+    "passed": 628,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 2.35,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 5
+ },
+ "openpdf-markdown": {
+  "overall": 48.2,
+  "ci": 0.9,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 93.7,
+    "passed": 1306,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 92.2,
+    "passed": 701,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 52.3,
+    "passed": 231,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 70.2,
+    "passed": 621,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 13.3,
+    "passed": 70,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 64.2,
+    "passed": 656,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 6.57,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 0
+ },
+ "openpdf-markdown-ocr": {
+  "overall": 53.0,
+  "ci": 1.0,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 98.9,
+    "passed": 1378,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 91.7,
+    "passed": 697,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 70.4,
+    "passed": 311,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 70.5,
+    "passed": 623,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 24.3,
+    "passed": 128,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 68.4,
+    "passed": 699,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 8.0,
+  "failed_conversions": 10,
+  "blank_pages_emptied": 0
+ },
+ "openpdf-text-ocr": {
+  "overall": 35.2,
+  "ci": 0.9,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 97.9,
+    "passed": 1365,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 39.5,
+    "passed": 300,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 67.2,
+    "passed": 297,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 58.1,
+    "passed": 514,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 18.8,
+    "passed": 99,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 0.2,
+    "passed": 2,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 0.33,
+  "failed_conversions": 10,
+  "blank_pages_emptied": 3
+ },
+ "docling-default": {
+  "overall": 53.7,
+  "ci": 0.9,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 98.9,
+    "passed": 1378,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 89.9,
+    "passed": 683,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 70.8,
+    "passed": 313,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 73.8,
+    "passed": 652,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 25.1,
+    "passed": 132,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 71.1,
+    "passed": 727,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 19.04,
+  "failed_conversions": 1,
+  "blank_pages_emptied": 0
+ },
+ "openpdf-markdown-auto": {
+  "overall": 53.5,
+  "ci": 0.9,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 98.1,
+    "passed": 1367,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 88.7,
+    "passed": 674,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 76.2,
+    "passed": 337,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 69.6,
+    "passed": 615,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 24.3,
+    "passed": 128,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 70.9,
+    "passed": 725,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 7.76,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 0
+ },
+ "openpdf-markdown-model": {
+  "overall": 67.5,
+  "ci": 1.1,
+  "categories": {
+   "arxiv_math": {
+    "rate": 64.6,
+    "passed": 1892,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 97.9,
+    "passed": 1365,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 88.6,
+    "passed": 673,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 78.7,
+    "passed": 348,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 69.2,
+    "passed": 612,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 32.3,
+    "passed": 170,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 32.3,
+    "passed": 148,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 76.0,
+    "passed": 777,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 6.08,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 0
+ },
+ "indra-ocr": {
+  "overall": 54.8,
+  "ci": 0.9,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.3,
+    "passed": 8,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 99.6,
+    "passed": 1389,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 89.6,
+    "passed": 681,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 76.0,
+    "passed": 336,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 75.6,
+    "passed": 668,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 27.4,
+    "passed": 144,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 2.8,
+    "passed": 13,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 67.4,
+    "passed": 689,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 0.4,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 0
+ },
+ "indra-ocr-math": {
+  "overall": 61.1,
+  "ci": 1.0,
+  "categories": {
+   "arxiv_math": {
+    "rate": 55.9,
+    "passed": 1636,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 99.6,
+    "passed": 1389,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 89.6,
+    "passed": 681,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 76.0,
+    "passed": 336,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 71.9,
+    "passed": 636,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 27.6,
+    "passed": 145,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 3.5,
+    "passed": 16,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 64.3,
+    "passed": 657,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 1.9,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 0
+ },
+ "pdfcraft-rs-markdown": {
+  "overall": 27.4,
+  "ci": 0.9,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.6,
+    "passed": 18,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 87.0,
+    "passed": 1213,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 37.6,
+    "passed": 286,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 10.9,
+    "passed": 48,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 42.4,
+    "passed": 375,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 13.3,
+    "passed": 70,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 27.1,
+    "passed": 277,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 0.02,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 183
+ },
+ "pdfcraft-markdown": {
+  "overall": 24.3,
+  "ci": 0.8,
+  "categories": {
+   "arxiv_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 2927
+   },
+   "baseline": {
+    "rate": 87.3,
+    "passed": 1217,
+    "total": 1394
+   },
+   "headers_footers": {
+    "rate": 52.0,
+    "passed": 395,
+    "total": 760
+   },
+   "long_tiny_text": {
+    "rate": 3.2,
+    "passed": 14,
+    "total": 442
+   },
+   "multi_column": {
+    "rate": 5.8,
+    "passed": 51,
+    "total": 884
+   },
+   "old_scans": {
+    "rate": 13.3,
+    "passed": 70,
+    "total": 526
+   },
+   "old_scans_math": {
+    "rate": 0.0,
+    "passed": 0,
+    "total": 458
+   },
+   "table_tests": {
+    "rate": 32.6,
+    "passed": 333,
+    "total": 1022
+   }
+  },
+  "seconds_per_page": 0.12,
+  "failed_conversions": 0,
+  "blank_pages_emptied": 0
+ }
+}

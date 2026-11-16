@@ -1,0 +1,22 @@
+{
+  "mainBinaryName": "OpenPDF",
+  "bundle": {
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns"
+    ],
+    "resources": {
+      "../../packaging/build/backend/": "backend/"
+    },
+    "shortDescription": "PDF viewer and editor",
+    "longDescription": "OpenPDF: read, annotate, fill, sign, merge and split PDF files on your own computer. Text recognition (OCR) is an optional add-on downloaded on first use.",
+    "category": "Productivity",
+    "macOS": {
+      "minimumSystemVersion": "11.0",
+      "hardenedRuntime": true,
+      "entitlements": "../../packaging/macos/entitlements.plist"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "/ui/index.html",
+  "name": "OpenPDF",
+  "short_name": "OpenPDF",
+  "description": "Edit, sign, fill and redact PDF files on your own computer",
+  "start_url": "/ui/index.html",
+  "scope": "/ui/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "/ui/icons/app-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/ui/icons/app-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/ui/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "file_handlers": [
+    {
+      "action": "/ui/index.html",
+      "accept": { "application/pdf": [".pdf"] },
+      "icons": [{ "src": "/ui/icons/app-192.png", "sizes": "192x192", "type": "image/png" }],
+      "launch_type": "single-client"
+    }
+  ],
+  "launch_handler": { "client_mode": ["focus-existing", "auto"] }
+}

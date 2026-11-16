@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>OpenPDF</title>
+    <link rel="icon" href="/ui/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root { --bg: #f6f7fb; --card: #fff; --text: #1f2333; --muted: #5b6075; --accent: #4f46e5; }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #15171f; --card: #1e2130; --text: #e6e8f0; --muted: #a0a5b8; --accent: #8b85ff; }
+      }
+      html, body { height: 100%; margin: 0; }
+      body { display: grid; place-items: center; background: var(--bg); color: var(--text);
+             font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; padding: 16px; box-sizing: border-box; }
+      .card { max-width: 460px; background: var(--card); border-radius: 14px; padding: 28px 28px 22px;
+              box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08); }
+      .card img { width: 40px; height: 40px; }
+      h1 { font-size: 19px; margin: 14px 0 8px; }
+      p { margin: 0 0 12px; color: var(--muted); }
+      #pending { color: var(--text); }
+      .waiting { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); margin-top: 18px; }
+      .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); animation: pulse 1.2s infinite ease-in-out; }
+      @keyframes pulse { 50% { opacity: 0.25; } }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <img src="/ui/favicon.svg" alt="" />
+      <h1 id="title">OpenPDF isn't running</h1>
+      <p id="body">Its services run on this computer. Open the OpenPDF app (or start the services), and this window will continue by itself.</p>
+      <p id="pending" hidden></p>
+      <div class="waiting"><span class="dot"></span><span id="waiting">Waiting for OpenPDF…</span></div>
+    </main>
+    <script src="/ui/i18n.js"></script>
+    <script src="/ui/locales/de.js"></script>
+    <script src="/ui/locales/es.js"></script>
+    <script src="/ui/locales/fr.js"></script>
+    <script src="/ui/locales/ja.js"></script>
+    <script src="/ui/locales/ko.js"></script>
+    <script src="/ui/locales/zh-CN.js"></script>
+    <script src="/ui/locales/zh-TW.js"></script>
+    <script src="/ui/offline.js"></script>
+  </body>
+</html>

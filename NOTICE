@@ -1,0 +1,21 @@
+OpenPDF (working name)
+Copyright 2026 Chaoxian (Gary) Xiao
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository also contains third-party files, each under its own licence,
+with the licence file next to it:
+
+- gateway/app/static/vendor/pdfjs/   pdf.js 4.10.38 (pdfjs-dist), Apache-2.0,
+  Copyright Mozilla Foundation and pdf.js contributors (LICENSE); its CMaps,
+  Copyright Adobe Systems Incorporated, BSD-3-Clause (cmaps/LICENSE); its
+  standard fonts: Foxit fonts, Copyright PDFium Authors, BSD-3-Clause
+  (standard_fonts/LICENSE_FOXIT), and Liberation Sans, SIL OFL 1.1
+  (standard_fonts/LICENSE_LIBERATION)
+- gateway/app/static/fonts/          Ma Shan Zheng, Liu Jian Mao Cao, Zhi Mang
+  Xing, Dancing Script, Great Vibes, SIL OFL 1.1 (OFL.txt, README.txt)
+- gateway/app/static/icons.js        SVG paths from Lucide, ISC License,
+  Copyright Lucide Contributors and Cole Bemis (Feather)
+  (LICENSE-lucide.txt)
+
+See THIRD-PARTY-NOTICES.md for the components used at build or run time.

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>OpenPDF</title>
+    <link rel="icon" href="/ui/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/ui/manifest.webmanifest" />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="stylesheet" href="/ui/vendor/pdfjs/pdf_viewer.css" />
+    <link rel="stylesheet" href="/ui/styles.css" />
+    <script src="/ui/i18n.js"></script>
+    <script src="/ui/locales/de.js"></script>
+    <script src="/ui/locales/es.js"></script>
+    <script src="/ui/locales/fr.js"></script>
+    <script src="/ui/locales/ja.js"></script>
+    <script src="/ui/locales/ko.js"></script>
+    <script src="/ui/locales/zh-CN.js"></script>
+    <script src="/ui/locales/zh-TW.js"></script>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- Top bar: file menu, open documents, settings -->
+      <header class="topbar">
+        <div class="menu-anchor">
+          <button type="button" class="file-menu-btn" data-menu="fileMenu" aria-haspopup="menu" aria-expanded="false" title="File">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>File</span>
+            <span class="caret" data-icon="chevron-down" data-icon-size="14"></span>
+          </button>
+          <div class="menu" id="fileMenu" role="menu" hidden>
+            <button type="button" class="menu-item" role="menuitem" data-action="open"><span data-icon="folder-open"></span><span class="menu-text">Open…</span><kbd>Ctrl O</kbd></button>
+            <button type="button" class="menu-item" role="menuitem" data-action="merge"><span data-icon="git-merge"></span><span class="menu-text">Combine PDFs…</span></button>
+            <button type="button" class="menu-item" role="menuitem" data-action="fromImages"><span data-icon="image-plus"></span><span class="menu-text">PDF from pictures…</span></button>
+            <div class="menu-sep" role="separator"></div>
+            <button type="button" class="menu-item" role="menuitem" data-action="save" disabled><span data-icon="save"></span><span class="menu-text">Save</span><kbd>Ctrl S</kbd></button>
+            <button type="button" class="menu-item" role="menuitem" data-action="print" disabled><span data-icon="printer"></span><span class="menu-text">Print…</span><kbd>Ctrl P</kbd></button>
+            <div class="menu-sep" role="separator"></div>
+            <button type="button" class="menu-item" role="menuitem" data-action="encrypt" disabled><span data-icon="lock"></span><span class="menu-text">Download a password-protected copy…</span></button>
+            <button type="button" class="menu-item" role="menuitem" data-action="unlock" disabled><span data-icon="lock-open"></span><span class="menu-text">Remove print and copy restrictions…</span></button>
+            <div class="menu-sep" role="separator"></div>
+            <button type="button" class="menu-item" role="menuitem" data-action="installApp" hidden><span data-icon="app-window"></span><span class="menu-text">Install as an app…</span></button>
+            <button type="button" class="menu-item" role="menuitem" data-action="openInBrowser" hidden><span data-icon="external-link"></span><span class="menu-text">Open in your browser</span></button>
+            <button type="button" class="menu-item" role="menuitem" data-action="settings"><span data-icon="settings"></span><span class="menu-text">Settings…</span></button>
+            <button type="button" class="menu-item" role="menuitem" data-action="help"><span data-icon="keyboard"></span><span class="menu-text">Keyboard shortcuts</span><kbd>?</kbd></button>
+          </div>
+        </div>
+
+        <div class="tabbar" id="tabbar" role="tablist" aria-label="Open documents">
+          <button type="button" class="tab-add" id="openTabBtn" title="Open PDF (Ctrl+O)" aria-label="Open PDF">
+            <span data-icon="plus" data-icon-size="16"></span>
+          </button>
+        </div>
+
+        <!-- Appears when there are more tabs than fit: lists every open file -->
+        <div class="menu-anchor tabs-all" id="tabsAll" hidden>
+          <button type="button" class="tabs-all-btn" data-menu="tabsMenu" aria-haspopup="menu" aria-expanded="false" title="All open files">
+            <span id="tabsCount"></span><span data-icon="chevron-down" data-icon-size="14"></span>
+          </button>
+          <div class="menu menu-right tabs-menu" id="tabsMenu" role="menu" hidden></div>
+        </div>
+
+        <button type="button" class="icon-btn topbar-settings" id="settingsBtn" title="Settings" aria-label="Settings">
+          <span data-icon="settings" data-icon-size="17"></span>
+        </button>
+      </header>
+
+      <!-- Toolbar: history | annotation tools | page, tools, find, print, save -->
+      <nav class="toolbar" aria-label="Toolbar">
+        <div class="toolbar-group history">
+          <button type="button" class="tool-btn icon-only" data-action="undo" title="Undo (Ctrl+Z)" aria-label="Undo" disabled>
+            <span class="tool-icon" data-icon="undo-2"></span>
+          </button>
+          <button type="button" class="tool-btn icon-only" data-action="redo" title="Redo (Ctrl+Y)" aria-label="Redo" disabled>
+            <span class="tool-icon" data-icon="redo-2"></span>
+          </button>
+        </div>
+
+        <div class="tool-tray" role="toolbar" aria-label="Editing tools">
+          <button type="button" class="tool-btn tool-mode" data-mode="select" data-key="V" title="Select text (V): drag to select, Ctrl+C to copy" disabled>
+            <span class="tool-icon" data-icon="mouse-pointer"></span><span class="tool-label">Select</span>
+          </button>
+          <span class="tool-sep" aria-hidden="true"></span>
+          <!-- Markup: drawn over the page, the original text stays -->
+          <button type="button" class="tool-btn tool-mode" data-mode="highlight" data-key="H" title="Highlight (H): drag across text" disabled>
+            <span class="tool-icon" data-icon="highlighter"></span><span class="tool-label">Highlight</span>
+          </button>
+          <button type="button" class="tool-btn tool-mode" data-mode="erase-highlight" data-key="E" title="Erase highlight (E): drag across a highlight" disabled>
+            <span class="tool-icon" data-icon="eraser"></span><span class="tool-label">Erase</span>
+          </button>
+          <button type="button" class="tool-btn tool-mode" data-mode="annotate" data-key="N" title="Comment (N): drag out an arrow and a callout box" disabled>
+            <span class="tool-icon" data-icon="message-square"></span><span class="tool-label">Comment</span>
+          </button>
+          <span class="tool-sep" aria-hidden="true"></span>
+          <!-- Change content -->
+          <!-- "Edit text" changes what the page says (the mode is still called cover-text:
+               saving removes what was under the box); "Add text" only adds -->
+          <button type="button" class="tool-btn tool-mode" data-mode="cover-text" data-key="W" title="Edit text (W): click text on the page to change it, or drag out an area to replace what is there" disabled>
+            <span class="tool-icon" data-icon="type"></span><span class="tool-label">Edit text</span>
+          </button>
+          <button type="button" class="tool-btn tool-mode" data-mode="replace-text" data-key="T" title="Add text (T): click the page and type new text" disabled>
+            <span class="tool-icon" data-icon="text-box"></span><span class="tool-label">Add text</span>
+          </button>
+          <button type="button" class="tool-btn tool-mode" data-mode="redact" data-key="R" title="Redact (R): remove names, numbers or areas for good" disabled>
+            <span class="tool-icon" data-icon="redact"></span><span class="tool-label">Redact</span>
+          </button>
+          <button type="button" class="tool-btn tool-forms" data-action="forms" data-key="F" title="Forms (F): fill in the form fields of the PDF" aria-pressed="false" disabled>
+            <span class="tool-icon" data-icon="clipboard-list"></span><span class="tool-label">Forms</span><span class="tool-dot" aria-hidden="true"></span>
+          </button>
+          <span class="tool-sep" aria-hidden="true"></span>
+          <!-- Add -->
+          <button type="button" class="tool-btn tool-mode" data-mode="sign" data-key="G" title="Sign (G): draw, type or upload a signature and click the page to place it; or sign digitally with a certificate" disabled>
+            <span class="tool-icon" data-icon="pen-tool"></span><span class="tool-label">Sign</span>
+          </button>
+          <button type="button" class="tool-btn tool-mode" data-mode="insert-image" data-key="I" title="Image (I): click a spot, then Ctrl+V to paste a picture" disabled>
+            <span class="tool-icon" data-icon="image-plus"></span><span class="tool-label">Image</span>
+          </button>
+        </div>
+
+        <div class="toolbar-group actions">
+          <div class="menu-anchor">
+            <button type="button" class="tool-btn menu-btn" data-menu="pageMenu" aria-haspopup="menu" aria-expanded="false" title="Pages: rotate, split, delete" disabled>
+              <span class="tool-icon" data-icon="files"></span><span class="tool-label">Pages</span><span class="caret" data-icon="chevron-down" data-icon-size="13"></span>
+            </button>
+            <div class="menu menu-right" id="pageMenu" role="menu" hidden>
+              <button type="button" class="menu-item" role="menuitem" data-action="rotate" disabled><span data-icon="rotate-cw"></span><span class="menu-text">Rotate pages…</span></button>
+              <button type="button" class="menu-item" role="menuitem" data-action="split" disabled><span data-icon="scissors"></span><span class="menu-text">Extract or split pages…</span></button>
+              <button type="button" class="menu-item danger" role="menuitem" data-action="deleteCurrentPage" disabled><span data-icon="trash-2"></span><span class="menu-text">Delete this page</span></button>
+              <div class="menu-sep" role="separator"></div>
+              <p class="menu-note">You can also right-click or drag the thumbnails on the left</p>
+            </div>
+          </div>
+          <div class="menu-anchor">
+            <button type="button" class="tool-btn menu-btn" data-menu="toolsMenu" aria-haspopup="menu" aria-expanded="false" title="More tools: OCR, flatten, plain text, export" disabled>
+              <span class="tool-icon" data-icon="wrench"></span><span class="tool-label">Tools</span><span class="caret" data-icon="chevron-down" data-icon-size="13"></span>
+            </button>
+            <div class="menu menu-right" id="toolsMenu" role="menu" hidden>
+              <button type="button" class="menu-item" role="menuitem" data-action="ocr" disabled><span data-icon="scan-text"></span><span class="menu-text">Recognize text in scans (OCR)…</span></button>
+              <button type="button" class="menu-item tool-toggle" role="menuitemcheckbox" data-action="extract" disabled><span data-icon="file-text"></span><span class="menu-text">Plain text view</span><span class="menu-check" data-icon="check" data-icon-size="14"></span></button>
+              <button type="button" class="menu-item" role="menuitem" data-action="flatten" disabled><span data-icon="layers"></span><span class="menu-text">Flatten comments and forms</span></button>
+              <div class="menu-sep" role="separator"></div>
+              <button type="button" class="menu-item" role="menuitem" data-action="exportImages" disabled><span data-icon="images"></span><span class="menu-text">Save the pictures…</span></button>
+              <button type="button" class="menu-item" role="menuitem" data-action="exportStructure" disabled><span data-icon="file-code"></span><span class="menu-text">Export as Markdown or JSON…</span></button>
+            </div>
+          </div>
+          <span class="toolbar-sep" aria-hidden="true"></span>
+          <button type="button" class="tool-btn icon-only" data-action="find" title="Find (Ctrl+F)" aria-label="Find" disabled>
+            <span class="tool-icon" data-icon="search"></span>
+          </button>
+          <button type="button" class="tool-btn icon-only" data-action="print" title="Print (Ctrl+P)" aria-label="Print" disabled>
+            <span class="tool-icon" data-icon="printer"></span>
+          </button>
+          <button type="button" class="tool-btn save-btn" data-action="save" title="Save (Ctrl+S)" disabled>
+            <span class="tool-icon" data-icon="save"></span><span class="tool-label">Save</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="busy-bar hidden" id="busyBar" role="progressbar" aria-label="Working"><span></span></div>
+
+      <div class="workspace">
+        <aside class="pages-panel" id="pagesPanel" aria-label="Page thumbnails">
+          <div class="panel-head">
+            <span class="panel-title">Pages <span class="panel-count" id="pageCountLabel"></span></span>
+            <button type="button" class="icon-btn" id="togglePagesBtn" title="Hide thumbnails" aria-label="Hide thumbnails" data-icon="panel-left" data-icon-size="16"></button>
+          </div>
+          <div class="thumbnails" id="thumbnails"></div>
+        </aside>
+
+        <main class="viewer-wrap">
+          <!-- Appears with an editing tool: what to do, and text style for text tools -->
+          <div class="tool-hint hidden" id="toolHint" aria-live="polite">
+            <span class="tool-hint-text" id="toolHintText"></span>
+            <div class="text-style-toolbar hidden" id="textStyleToolbar">
+              <span class="tool-hint-sep" id="textStyleSep" aria-hidden="true"></span>
+              <label class="visually-hidden" for="textFontFamilySelect">Font</label>
+              <select id="textFontFamilySelect" title="Font">
+                <option value="Helvetica" selected>Helvetica</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Arial">Arial</option>
+                <option value="宋体">Song (Chinese serif)</option>
+                <option value="黑体">Hei (Chinese sans)</option>
+              </select>
+              <label class="visually-hidden" for="textFontSizeSelect">Font size</label>
+              <select id="textFontSizeSelect" title="Font size">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="14" selected>14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="24">24</option>
+                <option value="28">28</option>
+                <option value="32">32</option>
+                <option value="36">36</option>
+                <option value="48">48</option>
+              </select>
+            </div>
+            <button type="button" class="tool-hint-done" id="toolHintDone" title="Stop editing (Esc)">Done</button>
+          </div>
+
+          <!-- Appears above selected text -->
+          <div class="selection-toolbar hidden" id="selectionToolbar" role="toolbar" aria-label="For the selected text">
+            <button type="button" data-sel="copy" title="Copy (Ctrl+C)"><span data-icon="copy" data-icon-size="15"></span><span>Copy</span></button>
+            <button type="button" data-sel="highlight" title="Highlight this text (H)"><span data-icon="highlighter" data-icon-size="15"></span><span>Highlight</span></button>
+            <button type="button" data-sel="cover" title="Change this text (W)"><span data-icon="text-box" data-icon-size="15"></span><span>Edit</span></button>
+            <button type="button" data-sel="redact" title="Mark this text for redaction (R)"><span data-icon="redact" data-icon-size="15"></span><span>Redact</span></button>
+            <button type="button" data-sel="find" title="Find this text"><span data-icon="search" data-icon-size="15"></span></button>
+          </div>
+
+          <div class="find-bar hidden" id="findBar" role="search">
+            <span class="find-icon" data-icon="search" data-icon-size="15" aria-hidden="true"></span>
+            <input id="findInput" type="search" placeholder="Find text" aria-label="Text to find" autocomplete="off" />
+            <span class="find-count" id="findCount" aria-live="polite"></span>
+            <button type="button" class="icon-btn" id="findPrevBtn" title="Previous (Shift+Enter)" aria-label="Previous" data-icon="chevron-up" data-icon-size="16"></button>
+            <button type="button" class="icon-btn" id="findNextBtn" title="Next (Enter)" aria-label="Next" data-icon="chevron-down" data-icon-size="16"></button>
+            <button type="button" class="icon-btn" id="findCloseBtn" title="Close (Esc)" aria-label="Close find" data-icon="x" data-icon-size="16"></button>
+          </div>
+
+          <div class="viewer-drop" id="viewerDrop" data-drop-label="Release to open">
+            <section class="welcome" id="welcome" aria-label="Start">
+              <div class="welcome-drop">
+                <div class="welcome-sheet" aria-hidden="true">
+                  <span></span><span></span><span class="short"></span><span class="mark"></span><span></span><span class="short"></span>
+                </div>
+                <h1>Drop a PDF here</h1>
+                <p>or</p>
+                <button type="button" class="primary-btn" id="welcomeOpenBtn">
+                  <span data-icon="folder-open" data-icon-size="16"></span>
+                  <span>Open PDF</span>
+                </button>
+              </div>
+              <section class="welcome-recent hidden" aria-labelledby="recentTitle">
+                <h2 id="recentTitle">Recent</h2>
+                <div class="recent-grid" id="recentFiles"></div>
+              </section>
+              <dl class="welcome-keys" aria-label="Common shortcuts">
+                <div><dt><kbd>Ctrl</kbd><kbd>O</kbd></dt><dd>Open</dd></div>
+                <div><dt><kbd>Ctrl</kbd><kbd>S</kbd></dt><dd>Save</dd></div>
+                <div><dt><kbd>Ctrl</kbd><kbd>Z</kbd></dt><dd>Undo</dd></div>
+                <div><dt><kbd>Ctrl</kbd><kbd>F</kbd></dt><dd>Find</dd></div>
+                <div><dt><kbd>H</kbd></dt><dd>Highlight</dd></div>
+                <div><dt><kbd>W</kbd></dt><dd>Edit text</dd></div>
+                <div><dt><kbd>Esc</kbd></dt><dd>Stop editing</dd></div>
+                <div><dt><kbd>?</kbd></dt><dd>All shortcuts</dd></div>
+              </dl>
+            </section>
+            <div class="viewer-scroll hidden" id="viewerScroll">
+              <div class="viewer-pages" id="viewerPages"></div>
+            </div>
+            <textarea id="textPanel" class="text-panel hidden" readonly aria-label="Document text"></textarea>
+          </div>
+        </main>
+
+        <aside class="props-panel hidden" id="propsPanel">
+          <div class="panel-head">
+            <span class="panel-title" id="propsTitle">Tools</span>
+            <button type="button" class="icon-btn" id="propsCloseBtn" title="Close" aria-label="Close panel" data-icon="x" data-icon-size="16"></button>
+          </div>
+          <div class="props-body" id="propsBody"></div>
+        </aside>
+      </div>
+
+      <footer class="statusbar">
+        <div class="page-nav">
+          <button type="button" class="icon-btn" id="prevPageBtn" title="Previous page (←)" aria-label="Previous page" disabled data-icon="chevron-left" data-icon-size="16"></button>
+          <label class="page-field">
+            <span class="visually-hidden">Current page</span>
+            <input type="text" inputmode="numeric" id="pageInput" value="" disabled aria-label="Current page: type a page number and press Enter" />
+            <span id="pageIndicator" class="page-total">/ —</span>
+          </label>
+          <button type="button" class="icon-btn" id="nextPageBtn" title="Next page (→)" aria-label="Next page" disabled data-icon="chevron-right" data-icon-size="16"></button>
+        </div>
+
+        <div class="status-message" id="statusMessage" role="status">Ready</div>
+
+        <div class="view-modes" role="group" aria-label="Page layout">
+          <button type="button" class="view-btn" data-view="single" title="Single page" aria-label="Single page"><span data-icon="file" data-icon-size="15"></span></button>
+          <button type="button" class="view-btn" data-view="two-page" title="Two pages" aria-label="Two pages"><span data-icon="book-open" data-icon-size="15"></span></button>
+          <button type="button" class="view-btn active" data-view="continuous" title="Continuous" aria-label="Continuous"><span data-icon="gallery-vertical" data-icon-size="15"></span></button>
+          <button type="button" class="view-btn" data-view="grid" title="Grid" aria-label="Grid"><span data-icon="layout-grid" data-icon-size="15"></span></button>
+        </div>
+
+        <div class="zoom-controls">
+          <button type="button" class="icon-btn" id="zoomOutBtn" title="Zoom out (Ctrl+−)" aria-label="Zoom out" disabled data-icon="minus" data-icon-size="16"></button>
+          <select id="zoomSelect" aria-label="Zoom level" disabled>
+            <option value="0.1">10%</option>
+            <option value="0.25">25%</option>
+            <option value="0.5">50%</option>
+            <option value="0.75">75%</option>
+            <option value="1">100%</option>
+            <option value="1.25">125%</option>
+            <option value="1.5">150%</option>
+            <option value="2">200%</option>
+            <option value="3">300%</option>
+            <option value="4">400%</option>
+            <option value="8">800%</option>
+            <option value="16">1600%</option>
+            <option value="32">3200%</option>
+            <option value="fit" selected>Fit width</option>
+          </select>
+          <button type="button" class="icon-btn" id="zoomInBtn" title="Zoom in (Ctrl+=)" aria-label="Zoom in" disabled data-icon="plus" data-icon-size="16"></button>
+        </div>
+      </footer>
+    </div>
+
+    <input type="file" id="fileInput" accept="application/pdf,.pdf,image/jpeg,image/png,image/tiff,image/gif,image/bmp,.jpg,.jpeg,.png,.tif,.tiff,.gif,.bmp" hidden />
+    <input type="file" id="mergeInput" accept="application/pdf,.pdf" multiple hidden />
+    <input type="file" id="imagesInput" accept="image/jpeg,image/png,image/tiff,image/gif,image/bmp,.jpg,.jpeg,.png,.tif,.tiff,.gif,.bmp" multiple hidden />
+
+    <div class="toasts" id="toasts" aria-live="polite"></div>
+
+    <dialog class="modal" id="helpDialog" aria-labelledby="helpTitle">
+      <div class="modal-card help-card" tabindex="-1">
+        <div class="help-head">
+          <h2 id="helpTitle">Keyboard shortcuts</h2>
+          <button type="button" class="icon-btn" data-close title="Close" aria-label="Close" data-icon="x" data-icon-size="16"></button>
+        </div>
+        <div class="help-columns">
+          <section>
+            <h3>File</h3>
+            <dl>
+              <div><dt><kbd>Ctrl</kbd><kbd>O</kbd></dt><dd>Open</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>S</kbd></dt><dd>Save</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>P</kbd></dt><dd>Print</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>F</kbd></dt><dd>Find</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>Z</kbd></dt><dd>Undo</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>Y</kbd></dt><dd>Redo</dd></div>
+            </dl>
+            <h3>Viewing</h3>
+            <dl>
+              <div><dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous / next page</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>+</kbd> <kbd>−</kbd></dt><dd>Zoom in / out</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>0</kbd></dt><dd>100%</dd></div>
+              <div><dt><kbd>Ctrl</kbd> + wheel</dt><dd>Zoom</dd></div>
+            </dl>
+          </section>
+          <section>
+            <h3>Tools</h3>
+            <dl>
+              <div><dt><kbd>V</kbd></dt><dd>Select text</dd></div>
+              <div><dt><kbd>H</kbd></dt><dd>Highlight; press again for the next shape (box, text, pen)</dd></div>
+              <div><dt><kbd>E</kbd></dt><dd>Erase highlight</dd></div>
+              <div><dt><kbd>W</kbd></dt><dd>Edit text</dd></div>
+              <div><dt><kbd>T</kbd></dt><dd>Add text</dd></div>
+              <div><dt><kbd>R</kbd></dt><dd>Redact</dd></div>
+              <div><dt><kbd>F</kbd></dt><dd>Fill in forms</dd></div>
+              <div><dt><kbd>N</kbd></dt><dd>Comment</dd></div>
+              <div><dt><kbd>G</kbd></dt><dd>Sign</dd></div>
+              <div><dt><kbd>I</kbd></dt><dd>Image</dd></div>
+              <div><dt><kbd>Esc</kbd></dt><dd>Stop editing, back to Select</dd></div>
+              <div><dt><kbd>Delete</kbd></dt><dd>Delete the selected text box or comment</dd></div>
+            </dl>
+            <h3>Selected text</h3>
+            <dl>
+              <div><dt><kbd>H</kbd> / <kbd>Ctrl</kbd><kbd>H</kbd></dt><dd>Highlight it</dd></div>
+              <div><dt><kbd>W</kbd></dt><dd>Edit it</dd></div>
+              <div><dt><kbd>R</kbd></dt><dd>Mark it for redaction</dd></div>
+              <div><dt><kbd>Ctrl</kbd><kbd>C</kbd></dt><dd>Copy it</dd></div>
+            </dl>
+            <h3>Mouse</h3>
+            <dl>
+              <div><dt>Selecting text</dt><dd>Shows Copy / Highlight / Edit / Redact</dd></div>
+              <div><dt>Right-click a page</dt><dd>Page actions</dd></div>
+              <div><dt>Drag a thumbnail</dt><dd>Reorder pages</dd></div>
+            </dl>
+          </section>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="settingsDialog">
+      <form method="dialog" class="modal-card">
+        <h2>Settings</h2>
+        <label class="settings-language"><span>Language</span><select id="languageSelect" data-no-i18n></select></label>
+        <fieldset class="choice-group">
+          <legend>When you press Ctrl+S</legend>
+          <label class="choice"><input type="radio" name="saveMode" value="overwrite" /><span><strong>Save to the original file</strong><small>Default. In the desktop app, or for files chosen with Open in Chrome or Edge; a dropped file is saved as a new copy</small></span></label>
+          <label class="choice"><input type="radio" name="saveMode" value="download" /><span><strong>Save a new copy</strong><small>Saved to your Downloads folder and the original stays as it was; a name already taken gets (1), (2)…</small></span></label>
+        </fieldset>
+        <fieldset class="choice-group">
+          <legend>Where Open starts</legend>
+          <label class="choice"><input type="radio" name="openStart" value="last" /><span><strong>The folder of the last file opened</strong><small>Documents the first time</small></span></label>
+          <label class="choice"><input type="radio" name="openStart" value="documents" /><span><strong>Documents folder</strong><small>Every time</small></span></label>
+        </fieldset>
+        <fieldset class="choice-group">
+          <legend>How signatures are added</legend>
+          <label class="choice"><input type="radio" name="signWriteMode" value="flatten" /><span><strong>Part of the page</strong><small>Default. The signature becomes part of the page: it cannot be removed on its own and prints reliably</small></span></label>
+          <label class="choice"><input type="radio" name="signWriteMode" value="annotation" /><span><strong>As a stamp</strong><small>The signature is a stamp annotation that can be moved or deleted (in other PDF apps too)</small></span></label>
+        </fieldset>
+        <fieldset class="choice-group" id="readingSection" hidden>
+          <legend>Reading tables, formulas and scans</legend>
+          <div id="readingChoices"></div>
+          <div class="ocr-progress" id="readingProgress" hidden>
+            <div class="ocr-progress-step" id="readingStep">Preparing…</div>
+            <div class="ocr-progress-bar"><span></span></div>
+          </div>
+          <p class="sign-error" id="readingError" hidden></p>
+        </fieldset>
+        <select id="saveModeSelect" class="visually-hidden" tabindex="-1" aria-hidden="true" data-no-i18n>
+          <option value="overwrite">overwrite</option>
+          <option value="download">download</option>
+        </select>
+        <label for="apiKey">API Key</label>
+        <input id="apiKey" type="password" autocomplete="off" placeholder="Leave empty if the service has no key" />
+        <p class="field-hint">Stored only in this browser.</p>
+        <menu class="modal-actions">
+          <button type="submit" class="primary-btn">Done</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog class="modal modal-wide" id="printDialog">
+      <div class="modal-card print-card">
+        <div class="print-head">
+          <h2>Print preview</h2>
+          <menu class="print-actions">
+            <button type="button" class="ghost-btn" id="printCloseBtn">Close</button>
+            <button type="button" class="primary-btn" id="printRunBtn">Print</button>
+          </menu>
+        </div>
+        <iframe id="printFrame" title="Print preview"></iframe>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="toolDialog">
+      <form method="dialog" class="modal-card" id="toolForm">
+        <h2 id="toolDialogTitle">Tools</h2>
+        <div id="toolDialogBody"></div>
+        <menu class="modal-actions">
+          <button type="button" class="ghost-btn" id="toolCancelBtn">Cancel</button>
+          <button type="submit" class="primary-btn" id="toolSubmitBtn">OK</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="/ui/icons.js"></script>
+    <script src="/ui/pdfjs-init.js" type="module"></script>
+    <script src="/ui/app.js" defer></script>
+    <script src="/ui/signature.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "openpdf-web",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "OpenPDF in the browser: the editor with its services running in a Web Worker (no server)",
+  "type": "module",
+  "dependencies": {
+    "@embedpdf/engines": "2.15.1",
+    "@embedpdf/pdfium": "2.15.1",
+    "@libpdf/core": "0.5.3",
+    "@paddleocr/paddleocr-js": "0.4.2",
+    "asn1js": "4.0.0",
+    "fflate": "0.8.3",
+    "node-forge": "1.4.0",
+    "onnxruntime-web": "1.30.0",
+    "pkijs": "4.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node build.mjs --serve",
+    "test": "python3 test/check_web.py http://127.0.0.1:28300 /tmp/pdf-engine-test"
+  }
+}

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenPDF</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --desk: #e6e8eb; --chrome: #fbfbfc; --line: #dadde2; --ink: #1c2430; --ink-3: #69717e;
+        --pen: #1e5aa8; --marker: #f5d547;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --desk: #2a2e35; --chrome: #1f2328; --line: #3a4049; --ink: #e7eaee; --ink-3: #8b93a0; --pen: #6ea2e6; }
+      }
+      body {
+        margin: 0; height: 100vh; display: flex; align-items: center; justify-content: center;
+        font: 14px/1.6 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei UI", "Noto Sans CJK SC", sans-serif;
+        background: var(--desk); color: var(--ink);
+      }
+      .card {
+        width: min(440px, calc(100vw - 48px)); padding: 36px 32px 30px; text-align: center;
+        background: var(--chrome); border: 1px solid var(--line); border-radius: 16px;
+      }
+      .sheet {
+        width: 64px; height: 84px; margin: 0 auto 22px; padding: 14px 11px; box-sizing: border-box;
+        display: flex; flex-direction: column; gap: 6px; background: #fff; border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(20,28,40,.12), 0 6px 18px rgba(20,28,40,.1);
+      }
+      .sheet span { height: 4px; border-radius: 2px; background: #d5d9df; }
+      .sheet span.short { width: 60%; }
+      .sheet span.mark { height: 6px; margin: -1px 0; background: var(--marker); transform-origin: left; animation: mark 1.6s ease-in-out infinite; }
+      @keyframes mark { 0% { transform: scaleX(0); } 60%, 100% { transform: scaleX(1); } }
+      @media (prefers-reduced-motion: reduce) { .sheet span.mark { animation: none; } }
+      h2 { margin: 0 0 6px; font-size: 17px; font-weight: 600; }
+      p { margin: 0; color: var(--ink-3); }
+      .help { display: none; text-align: left; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink); }
+      .help p { color: var(--ink); margin: 0 0 8px; }
+      code { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="sheet" aria-hidden="true"><span></span><span></span><span class="short"></span><span class="mark"></span><span></span><span class="short"></span></div>
+      <h2 id="title">Starting OpenPDF…</h2>
+      <p id="detail">The first start builds the background services and can take a few minutes; after that it takes seconds.</p>
+      <div class="help" id="help">
+        <p id="helpIntro">The background services are not answering yet. Make sure Podman (Linux) or Docker Desktop / Podman Desktop (Windows) is installed, then run this in the OpenPDF folder:</p>
+        <p><code>./scripts/start.sh</code> (Linux)<br /><code>powershell -File scripts\start.ps1</code> (Windows)</p>
+        <p id="helpHome">If the OpenPDF folder is not next to the app, set the environment variable <code>OPENPDF_HOME</code> to it. This window keeps waiting and opens the editor once the services are up.</p>
+      </div>
+    </div>
+    <script>
+      // The installed app sets __OPENPDF_GATEWAY (its services use free ports);
+      // a development checkout runs the editor on 8090.
+      const GATEWAY = window.__OPENPDF_GATEWAY || "http://127.0.0.1:8090";
+      const installed = !!(window.__OPENPDF_GATEWAY || window.__OPENPDF_START_ERROR);
+      // the editor says so when its stored settings are not there (another port than last time)
+      const EDITOR = `${GATEWAY}/ui/index.html${window.__OPENPDF_PORT_CHANGED ? "?portChanged=1" : ""}`;
+      const started = Date.now();
+      const $ = (id) => document.getElementById(id);
+      // This page is shown before the editor (and its translations) can load:
+      // its few texts are here, in the languages the editor has.
+      const TEXTS = {
+        "zh-CN": {
+          starting: "正在启动 OpenPDF…",
+          firstStart: "第一次启动需要构建后台服务，可能要几分钟；之后几秒即可。",
+          soon: "几秒后打开编辑器。",
+          helpIntro: "后台服务还没有响应。请确认已安装 Podman（Linux）或 Docker Desktop / Podman Desktop（Windows），然后在 OpenPDF 文件夹里运行：",
+          helpHome: "如果 OpenPDF 文件夹不在程序旁边，请设置环境变量 OPENPDF_HOME 指向它。这个窗口会一直等待，服务启动后自动打开编辑器。",
+          notStarted: "OpenPDF 后台服务没有启动",
+          reason: "原因：{0}",
+          reopenReinstall: "请关闭 OpenPDF 后重新打开。如果仍然不行，请重新安装。",
+          noAnswer: "OpenPDF 后台服务没有响应",
+          reopen: "请关闭 OpenPDF 后重新打开。",
+          logs: "如果仍然不行，日志在：{0}",
+          unknown: "（未知）",
+          waiting: "仍在等待 OpenPDF 后台服务…",
+        },
+        "zh-TW": {
+          starting: "正在啟動 OpenPDF…",
+          firstStart: "第一次啟動需要建置背景服務，可能要幾分鐘；之後幾秒即可。",
+          soon: "幾秒後開啟編輯器。",
+          helpIntro: "背景服務尚未回應。請確認已安裝 Podman（Linux）或 Docker Desktop / Podman Desktop（Windows），然後在 OpenPDF 資料夾中執行：",
+          helpHome: "如果 OpenPDF 資料夾不在程式旁邊，請設定環境變數 OPENPDF_HOME 指向它。此視窗會持續等待，服務啟動後自動開啟編輯器。",
+          notStarted: "OpenPDF 背景服務沒有啟動",
+          reason: "原因：{0}",
+          reopenReinstall: "請關閉 OpenPDF 後重新開啟。如果仍然無法使用，請重新安裝。",
+          noAnswer: "OpenPDF 背景服務沒有回應",
+          reopen: "請關閉 OpenPDF 後重新開啟。",
+          logs: "如果仍然無法使用，記錄檔位於：{0}",
+          unknown: "（不明）",
+          waiting: "仍在等待 OpenPDF 背景服務…",
+        },
+        ja: {
+          starting: "OpenPDF を起動しています…",
+          firstStart: "初回の起動ではバックグラウンド サービスを準備するため、数分かかることがあります。2 回目以降は数秒で起動します。",
+          soon: "数秒後にエディターが開きます。",
+          helpIntro: "バックグラウンド サービスがまだ応答しません。Podman（Linux）または Docker Desktop / Podman Desktop（Windows）がインストールされていることを確認し、OpenPDF フォルダーで次を実行してください：",
+          helpHome: "OpenPDF フォルダーがアプリと同じ場所にない場合は、環境変数 OPENPDF_HOME にそのフォルダーを設定してください。このウィンドウは待機を続け、サービスが起動するとエディターを開きます。",
+          notStarted: "OpenPDF のバックグラウンド サービスが起動しませんでした",
+          reason: "原因：{0}",
+          reopenReinstall: "OpenPDF を閉じてから、もう一度開いてください。それでも解決しない場合は、再インストールしてください。",
+          noAnswer: "OpenPDF のバックグラウンド サービスが応答しません",
+          reopen: "OpenPDF を閉じてから、もう一度開いてください。",
+          logs: "それでも解決しない場合、ログの場所：{0}",
+          unknown: "（不明）",
+          waiting: "OpenPDF のバックグラウンド サービスを待っています…",
+        },
+        ko: {
+          starting: "OpenPDF를 시작하는 중…",
+          firstStart: "처음 시작할 때는 백그라운드 서비스를 준비하느라 몇 분이 걸릴 수 있습니다. 그다음부터는 몇 초면 됩니다.",
+          soon: "잠시 후 편집기가 열립니다.",
+          helpIntro: "백그라운드 서비스가 아직 응답하지 않습니다. Podman(Linux) 또는 Docker Desktop / Podman Desktop(Windows)이 설치되어 있는지 확인한 다음 OpenPDF 폴더에서 다음을 실행하세요.",
+          helpHome: "OpenPDF 폴더가 앱 옆에 없으면 환경 변수 OPENPDF_HOME을 그 폴더로 설정하세요. 이 창은 계속 기다리다가 서비스가 시작되면 편집기를 엽니다.",
+          notStarted: "OpenPDF 백그라운드 서비스가 시작되지 않았습니다",
+          reason: "원인: {0}",
+          reopenReinstall: "OpenPDF를 닫았다가 다시 여세요. 그래도 안 되면 다시 설치하세요.",
+          noAnswer: "OpenPDF 백그라운드 서비스가 응답하지 않습니다",
+          reopen: "OpenPDF를 닫았다가 다시 여세요.",
+          logs: "그래도 안 되면 로그 위치: {0}",
+          unknown: "(알 수 없음)",
+          waiting: "OpenPDF 백그라운드 서비스를 계속 기다리는 중…",
+        },
+        de: {
+          starting: "OpenPDF wird gestartet…",
+          firstStart: "Beim ersten Start werden die Hintergrunddienste eingerichtet. Das kann einige Minuten dauern, danach nur Sekunden.",
+          soon: "Der Editor öffnet sich in wenigen Sekunden.",
+          helpIntro: "Die Hintergrunddienste antworten noch nicht. Stellen Sie sicher, dass Podman (Linux) oder Docker Desktop / Podman Desktop (Windows) installiert ist, und führen Sie dann im OpenPDF-Ordner aus:",
+          helpHome: "Wenn der OpenPDF-Ordner nicht neben der App liegt, setzen Sie die Umgebungsvariable OPENPDF_HOME auf diesen Ordner. Dieses Fenster wartet und öffnet den Editor, sobald die Dienste laufen.",
+          notStarted: "Die Hintergrunddienste von OpenPDF wurden nicht gestartet",
+          reason: "Grund: {0}",
+          reopenReinstall: "Schließen Sie OpenPDF und öffnen Sie es erneut. Wenn das nicht hilft, installieren Sie es neu.",
+          noAnswer: "Die Hintergrunddienste von OpenPDF antworten nicht",
+          reopen: "Schließen Sie OpenPDF und öffnen Sie es erneut.",
+          logs: "Wenn das nicht hilft, finden Sie die Protokolle hier: {0}",
+          unknown: "(unbekannt)",
+          waiting: "Warte weiter auf die Hintergrunddienste von OpenPDF…",
+        },
+        fr: {
+          starting: "Démarrage d’OpenPDF…",
+          firstStart: "Le premier démarrage prépare les services d’arrière-plan et peut prendre quelques minutes ; ensuite, quelques secondes suffisent.",
+          soon: "L’éditeur s’ouvre dans quelques secondes.",
+          helpIntro: "Les services d’arrière-plan ne répondent pas encore. Vérifiez que Podman (Linux) ou Docker Desktop / Podman Desktop (Windows) est installé, puis exécutez dans le dossier OpenPDF :",
+          helpHome: "Si le dossier OpenPDF n’est pas à côté de l’application, définissez la variable d’environnement OPENPDF_HOME sur ce dossier. Cette fenêtre attend et ouvre l’éditeur dès que les services sont prêts.",
+          notStarted: "Les services d’arrière-plan d’OpenPDF n’ont pas démarré",
+          reason: "Cause : {0}",
+          reopenReinstall: "Fermez OpenPDF puis rouvrez-le. Si le problème persiste, réinstallez-le.",
+          noAnswer: "Les services d’arrière-plan d’OpenPDF ne répondent pas",
+          reopen: "Fermez OpenPDF puis rouvrez-le.",
+          logs: "Si le problème persiste, les journaux se trouvent ici : {0}",
+          unknown: "(inconnu)",
+          waiting: "Toujours en attente des services d’arrière-plan d’OpenPDF…",
+        },
+        es: {
+          starting: "Iniciando OpenPDF…",
+          firstStart: "El primer inicio prepara los servicios en segundo plano y puede tardar unos minutos; después, solo unos segundos.",
+          soon: "El editor se abrirá en unos segundos.",
+          helpIntro: "Los servicios en segundo plano aún no responden. Compruebe que Podman (Linux) o Docker Desktop / Podman Desktop (Windows) está instalado y ejecute esto en la carpeta de OpenPDF:",
+          helpHome: "Si la carpeta de OpenPDF no está junto a la aplicación, defina la variable de entorno OPENPDF_HOME con esa carpeta. Esta ventana sigue esperando y abre el editor cuando los servicios estén listos.",
+          notStarted: "Los servicios en segundo plano de OpenPDF no se iniciaron",
+          reason: "Motivo: {0}",
+          reopenReinstall: "Cierre OpenPDF y vuelva a abrirlo. Si sigue sin funcionar, reinstálelo.",
+          noAnswer: "Los servicios en segundo plano de OpenPDF no responden",
+          reopen: "Cierre OpenPDF y vuelva a abrirlo.",
+          logs: "Si sigue sin funcionar, los registros están en: {0}",
+          unknown: "(desconocido)",
+          waiting: "Seguimos esperando los servicios en segundo plano de OpenPDF…",
+        },
+      };
+      const EN = {
+        starting: $("title").textContent,
+        firstStart: $("detail").textContent,
+        soon: "The editor opens in a few seconds.",
+        notStarted: "The OpenPDF background services did not start",
+        reason: "Reason: {0}",
+        reopenReinstall: "Close OpenPDF and open it again. If that doesn't help, reinstall it.",
+        noAnswer: "The OpenPDF background services are not answering",
+        reopen: "Close OpenPDF and open it again.",
+        logs: "If that doesn't help, the logs are in: {0}",
+        unknown: "(unknown)",
+        waiting: "Still waiting for the OpenPDF background services…",
+      };
+      function language() {
+        for (const tag of navigator.languages || [navigator.language || "en"]) {
+          const lower = String(tag).toLowerCase();
+          if (lower.startsWith("zh")) return /hant|-tw|-hk|-mo/.test(lower) ? "zh-TW" : "zh-CN";
+          const base = lower.split("-")[0];
+          if (TEXTS[base]) return base;
+          if (base === "en") return "en";
+        }
+        return "en";
+      }
+      const LANG = language();
+      const L = TEXTS[LANG] || {};
+      const text = (key, value) => (L[key] || EN[key] || key).replace("{0}", value ?? "");
+      document.documentElement.lang = LANG;
+      if (LANG !== "en") {
+        $("title").textContent = text("starting");
+        $("detail").textContent = text("firstStart");
+        // the help paragraphs hold <code>: keep it, replace only the words
+        $("helpIntro").textContent = L.helpIntro;
+        $("helpHome").textContent = L.helpHome;
+      }
+      function showProblem(title, lines) {
+        $("title").textContent = title;
+        $("detail").textContent = "";
+        const help = $("help");
+        help.textContent = "";
+        for (const line of lines) {
+          const p = document.createElement("p");
+          p.textContent = line;
+          help.appendChild(p);
+        }
+        help.style.display = "block";
+      }
+      if (installed) {
+        $("detail").textContent = text("soon");
+      }
+      async function poll() {
+        if (window.__OPENPDF_START_ERROR) {
+          showProblem(text("notStarted"), [text("reason", window.__OPENPDF_START_ERROR), text("reopenReinstall")]);
+          return;
+        }
+        try {
+          await fetch(`${GATEWAY}/health`, { mode: "no-cors", cache: "no-store" });
+          location.replace(EDITOR);
+          return;
+        } catch (_) {
+          /* not up yet */
+        }
+        if (installed && Date.now() - started > 60000) {
+          showProblem(text("noAnswer"), [text("reopen"), text("logs", window.__OPENPDF_LOGS || text("unknown"))]);
+        } else if (!installed && Date.now() - started > 180000) {
+          $("help").style.display = "block";
+          $("title").textContent = text("waiting");
+        }
+        setTimeout(poll, 1000);
+      }
+      poll();
+    </script>
+  </body>
+</html>

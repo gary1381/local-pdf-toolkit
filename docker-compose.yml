@@ -1,0 +1,68 @@
+# Docker / Podman Compose setup. The editor listens on this computer only;
+# to serve a network set BIND_ADDR=0.0.0.0, API_KEY and ALLOWED_HOSTS in .env.
+services:
+  # Optional text recognition (about 450 MB). Not started by default;
+  # install with: scripts/install-ocr.sh (or: docker compose --profile ocr up -d ocr)
+  ocr:
+    build: ./services/ocr
+    profiles: ["ocr"]
+    restart: unless-stopped
+
+  # Optional document structure for agents (Docling, about 2 GB). Not started
+  # by default; install with: scripts/install-structure.sh
+  # (or: docker compose --profile structure up -d structure)
+  structure:
+    build: ./services/structure
+    profiles: ["structure"]
+    environment:
+      # the reading model below, when it runs: tables, formulas and scans read again
+      OPENPDF_VLM_URL: http://model:8080
+      OPENPDF_VLM_MODEL: ${MODEL_PROFILE:-paddleocr-vl}
+    restart: unless-stopped
+
+  # Optional document reading model (docs/OCR-MODELS.md): MODEL_TIER=fast
+  # (PaddleOCR-VL 1.6, 0.9 GB) or best (Unlimited-OCR 3B, 2.8 GB, GPU; set
+  # MODEL_PROFILE=unlimited-ocr). Needs the structure component; install with
+  # scripts/install-model.sh [fast|best].
+  model:
+    build: ./services/model
+    profiles: ["model"]
+    environment:
+      MODEL_TIER: ${MODEL_TIER:-fast}
+    volumes:
+      - models:/models
+    restart: unless-stopped
+
+  pdfbox:
+    build: ./services/pdfbox
+    environment:
+      BIND_HOST: 0.0.0.0   # the gateway reaches it from its own container
+    restart: unless-stopped
+
+  qpdf:
+    build: ./services/qpdf
+    restart: unless-stopped
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:8090:8090"
+    environment:
+      OCR_URL: http://ocr:8091
+      PDFBOX_URL: http://pdfbox:8092
+      QPDF_URL: http://qpdf:8093
+      STRUCTURE_URL: http://structure:8094
+      # Empty = no key. Always set one when BIND_ADDR is not 127.0.0.1.
+      API_KEY: ${API_KEY:-}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-127.0.0.1,localhost}
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-200}
+    volumes:
+      - sessions:/data/sessions
+    depends_on:
+      - pdfbox
+      - qpdf
+    restart: unless-stopped
+
+volumes:
+  sessions:
+  models:

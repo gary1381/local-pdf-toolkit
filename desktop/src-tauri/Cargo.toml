@@ -1,0 +1,37 @@
+[package]
+name = "pdf-gateway-desktop"
+version = "0.2.0"
+description = "OpenPDF desktop shell"
+authors = ["Chaoxian (Gary) Xiao"]
+license = "Apache-2.0"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+reqwest = { version = "0.12", features = ["blocking", "rustls-tls"], default-features = false }
+sha2 = "0.10"
+# unpacking the OCR add-on (.tar.gz) on every system
+flate2 = "1"
+tar = "0.4"
+# PDF files from the command line go to the editor as base64
+base64 = "0.22"
+# the reading-model catalog (services/model/catalog.json), compiled in
+serde_json = "1"
+# a second start shows the running window instead of starting the services twice
+tauri-plugin-single-instance = "2"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+# Same versions Tauri already uses; needed for our own "Open" dialog.
+webkit2gtk = { version = "=2.0.2", features = ["v2_40"] }
+javascriptcore-rs = "1.1"
+gtk = "0.18"
+glib = "0.18"
+gio = "0.18"
+libc = "0.2"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

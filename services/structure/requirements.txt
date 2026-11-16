@@ -1,0 +1,12 @@
+# CPU-only PyTorch: the CUDA build would add about 3 GB for nothing here.
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi==0.143.0
+uvicorn==0.54.0
+python-multipart==0.0.32
+# Docling without the extras this service never uses (OCR engines, Office,
+# audio, VLMs): PDF parsing plus the layout and table models.
+docling-slim[convert-core,format-pdf,models-local]==2.142.0
+# the table model imports cv2 but docling-slim does not declare it
+opencv-python-headless==5.0.0.93
+torch==2.14.1+cpu
+torchvision==0.29.1+cpu

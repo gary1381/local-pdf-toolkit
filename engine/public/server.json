@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.gary1381/pdf-engine",
+  "title": "PDF Engine",
+  "description": "Local PDF tools for agents: read, search, OCR, fill forms, redact for real, sign and rearrange PDFs on your computer. Nothing is uploaded.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/gary1381/local-pdf-toolkit",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "oci",
+      "identifier": "ghcr.io/gary1381/pdf-engine:0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

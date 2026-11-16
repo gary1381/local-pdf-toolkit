@@ -1,0 +1,169 @@
+# Windows and macOS installers for the desktop app.
+#
+# Each job builds natively on its system with packaging/desktop/build.py
+# (services, OCR add-on, installer), tests the services
+# (packaging/desktop/smoke_test.py) and the app itself
+# (packaging/desktop/app_test.py: starts its services, stops them, and they
+# stop by themselves if the app is killed), then uploads the files.
+#
+# Run it from the Actions tab (workflow_dispatch; the file must be on the
+# default branch for that), by pushing a v* tag (all systems), or by pushing a
+# ci/... branch (Windows only; ci/...-macos or ci/...-all for the others).
+# Linux packages are built with packaging/linux/ (containers), not here.
+#
+# Signing (optional; without it the installers are unsigned):
+#   macOS:   APPLE_CERTIFICATE (base64 .p12), APPLE_CERTIFICATE_PASSWORD,
+#            APPLE_SIGNING_IDENTITY, and for notarization APPLE_ID,
+#            APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+#   Windows: not wired up yet (see packaging/desktop/README.md)
+name: Desktop installers
+
+on:
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: Which installers
+        type: choice
+        options: [all, windows, macos]
+        default: all
+      ocr:
+        description: Build and test the OCR add-on too
+        type: boolean
+        default: true
+  push:
+    tags: ["v*"]
+    # test branches: Windows only, unless the branch name ends in -all or -macos
+    branches: ["ci/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        # all three on a tag; a manual run can pick Windows or macOS only
+        # (macOS minutes cost ten times as much on private repositories)
+        include: ${{ fromJSON(
+          (inputs.platforms == 'windows' || (github.ref_type == 'branch' && !inputs.platforms
+            && !endsWith(github.ref_name, '-all') && !endsWith(github.ref_name, '-macos')))
+            && '[{"name":"Windows x64","os":"windows-latest"}]' ||
+          (inputs.platforms == 'macos' || endsWith(github.ref_name, '-macos')) && '[{"name":"macOS Apple silicon","os":"macos-15"},{"name":"macOS Intel","os":"macos-15-intel"}]' ||
+          '[{"name":"Windows x64","os":"windows-latest"},{"name":"macOS Apple silicon","os":"macos-15"},{"name":"macOS Intel","os":"macos-15-intel"}]') }}
+    env:
+      WITH_OCR: ${{ github.event_name == 'push' || inputs.ocr }}
+      HAS_APPLE_CERT: ${{ secrets.APPLE_CERTIFICATE != '' }}
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+          cache-dependency-path: services/pdfbox/pom.xml
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: desktop/src-tauri
+
+      - name: Maven
+        shell: bash
+        run: command -v mvn || (brew install maven && command -v mvn)
+
+      - name: Import the Apple signing certificate
+        if: runner.os == 'macOS' && env.HAS_APPLE_CERT == 'true'
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+        shell: bash
+        run: |
+          echo "$APPLE_CERTIFICATE" | base64 --decode > cert.p12
+          security create-keychain -p ci build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p ci build.keychain
+          security import cert.p12 -k build.keychain -P "$APPLE_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k ci build.keychain
+          rm cert.p12
+
+      - name: Build
+        id: build
+        shell: bash
+        env:
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          # no certificate: leave the variables unset, so nothing tries to sign
+          if [ -z "$APPLE_SIGNING_IDENTITY" ]; then unset APPLE_SIGNING_IDENTITY APPLE_ID APPLE_PASSWORD APPLE_TEAM_ID; fi
+          if [ "$WITH_OCR" = "true" ]; then python packaging/desktop/build.py; else python packaging/desktop/build.py --no-ocr; fi
+
+      - name: Test the services
+        shell: bash
+        run: |
+          if [ "$WITH_OCR" = "true" ]; then
+            python packaging/desktop/smoke_test.py --ocr packaging/build/ocr/openpdf-ocr.tar.gz
+          else
+            python packaging/desktop/smoke_test.py
+          fi
+
+      - name: Install (Windows)
+        if: always() && steps.build.outcome == 'success' && runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $setup = Get-ChildItem packaging/build/dist/*-setup.exe | Select-Object -First 1
+          Start-Process -FilePath $setup.FullName -ArgumentList "/S" -Wait
+          $dir = Join-Path $env:LOCALAPPDATA "OpenPDF"
+          $app = Get-ChildItem $dir -Filter *.exe | Where-Object { $_.Name -notlike "uninstall*" } | Select-Object -First 1
+          "APP=$($app.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          Get-ChildItem $dir
+
+      - name: Locate the app (macOS)
+        if: always() && steps.build.outcome == 'success' && runner.os == 'macOS'
+        shell: bash
+        run: |
+          app=$(ls -d desktop/src-tauri/target/release/bundle/macos/*.app | head -1)
+          bin="$app/Contents/MacOS/$(defaults read "$PWD/$app/Contents/Info" CFBundleExecutable)"
+          echo "APP=$PWD/$bin" >> "$GITHUB_ENV"
+          ls -la "$app/Contents/Resources/backend"
+
+      - name: Test the app
+        # also when the services test failed: the two find different problems
+        if: always() && steps.build.outcome == 'success'
+        shell: bash
+        run: |
+          python -m pip install -q psutil
+          python packaging/desktop/app_test.py "$APP"
+
+      - name: Logs (on failure)
+        if: failure()
+        shell: bash
+        run: |
+          for d in "$APPDATA/com.pdfgateway.desktop/logs" "$LOCALAPPDATA/com.pdfgateway.desktop/logs" \
+                   "$HOME/Library/Application Support/com.pdfgateway.desktop/logs"; do
+            [ -d "$d" ] && for f in "$d"/*.log; do echo "----- $f"; tail -n 60 "$f"; done
+          done
+          true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: openpdf-${{ runner.os }}-${{ runner.arch }}
+          path: packaging/build/dist/*
+          if-no-files-found: warn

@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.log
+.idea/
+.vscode/
+services/pdfbox/target/
+*.pdf
+!samples/
+stirling-pdf/
+desktop/node_modules/
+desktop/src-tauri/target/
+desktop/src-tauri/gen/
+
+# OCR test images supplied by the user; kept local
+prototypes/ocr-bench/real-samples/
+packaging/build/
+services/pdfbox/dependency-reduced-pom.xml
+
+web/node_modules/
+web/dist/
+web/.cache/
